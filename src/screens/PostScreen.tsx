@@ -1,69 +1,58 @@
 import { Ionicons } from '@expo/vector-icons';
 import { Pressable, StyleSheet, Text, TextInput, View } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
+import { BottomTabNavigationProp } from '@react-navigation/bottom-tabs';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { Avatar } from '../components/Avatar';
 import { currentUser } from '../data/mock';
 import { colors } from '../theme/colors';
+import { MainTabParamList } from '../navigation/types';
 
 export function PostScreen() {
   const insets = useSafeAreaInsets();
+  const navigation = useNavigation<BottomTabNavigationProp<MainTabParamList>>();
 
   return (
     <View style={[styles.container, { paddingTop: insets.top }]}>
       <View style={styles.header}>
-        <Text style={styles.cancel}>Cancelar</Text>
-        <Text style={styles.title}>Criar publicação</Text>
-        <Pressable style={styles.postBtn}>
-          <Text style={styles.postBtnText}>Publicar</Text>
+        <Pressable onPress={() => navigation.navigate('Home')}>
+          <Ionicons name="close" size={28} color={colors.black} />
         </Pressable>
-      </View>
-
-      <View style={styles.author}>
-        <Avatar
-          initials={currentUser.initials}
-          color={currentUser.avatarColor}
-          size={48}
-        />
-        <View>
-          <Text style={styles.name}>{currentUser.name}</Text>
-          <View style={styles.audience}>
-            <Ionicons name="earth" size={14} color={colors.gray} />
-            <Text style={styles.audienceText}>Qualquer pessoa</Text>
-            <Ionicons name="caret-down" size={14} color={colors.gray} />
-          </View>
+        <Pressable style={styles.userSelect}>
+          <Avatar
+            initials={currentUser.initials}
+            color={currentUser.avatarColor}
+            size={36}
+          />
+          <Ionicons name="caret-down" size={14} color={colors.gray} />
+        </Pressable>
+        <View style={styles.headerRight}>
+          <Pressable style={styles.clockBtn}>
+            <Ionicons name="time-outline" size={22} color={colors.gray} />
+          </Pressable>
+          <Pressable style={styles.publishBtn}>
+            <Text style={styles.publishText}>Publicar</Text>
+          </Pressable>
         </View>
       </View>
 
       <TextInput
         style={styles.input}
-        placeholder="Sobre o que você quer falar?"
+        placeholder="Compartilhe suas ideias..."
         placeholderTextColor={colors.grayLight}
         multiline
         textAlignVertical="top"
       />
 
-      <View style={styles.toolbar}>
-        <Tool icon="image-outline" label="Mídia" />
-        <Tool icon="calendar-outline" label="Evento" />
-        <Tool icon="briefcase-outline" label="Vaga" />
-        <Tool icon="document-text-outline" label="Artigo" />
+      <View style={[styles.fabs, { bottom: insets.bottom + 20 }]}>
+        <Pressable style={styles.fab}>
+          <Ionicons name="image-outline" size={22} color={colors.gray} />
+        </Pressable>
+        <Pressable style={[styles.fab, styles.fabLarge]}>
+          <Ionicons name="add" size={28} color={colors.gray} />
+        </Pressable>
       </View>
     </View>
-  );
-}
-
-function Tool({
-  icon,
-  label,
-}: {
-  icon: keyof typeof Ionicons.glyphMap;
-  label: string;
-}) {
-  return (
-    <Pressable style={styles.tool}>
-      <Ionicons name={icon} size={22} color={colors.gray} />
-      <Text style={styles.toolLabel}>{label}</Text>
-    </Pressable>
   );
 }
 
@@ -75,80 +64,60 @@ const styles = StyleSheet.create({
   header: {
     flexDirection: 'row',
     alignItems: 'center',
-    justifyContent: 'space-between',
-    paddingHorizontal: 16,
-    paddingVertical: 12,
-    borderBottomWidth: StyleSheet.hairlineWidth,
-    borderBottomColor: colors.border,
+    paddingHorizontal: 12,
+    paddingVertical: 10,
+    gap: 10,
   },
-  cancel: {
-    color: colors.gray,
-    fontSize: 15,
-  },
-  title: {
-    fontWeight: '700',
-    fontSize: 16,
-    color: colors.black,
-  },
-  postBtn: {
-    backgroundColor: colors.primary,
-    borderRadius: 16,
-    paddingHorizontal: 14,
-    paddingVertical: 6,
-  },
-  postBtnText: {
-    color: colors.white,
-    fontWeight: '700',
-    fontSize: 13,
-  },
-  author: {
-    flexDirection: 'row',
-    gap: 12,
-    padding: 16,
-    alignItems: 'center',
-  },
-  name: {
-    fontWeight: '700',
-    fontSize: 15,
-    color: colors.black,
-  },
-  audience: {
+  userSelect: {
     flexDirection: 'row',
     alignItems: 'center',
     gap: 4,
-    marginTop: 4,
-    borderWidth: 1,
-    borderColor: colors.border,
-    borderRadius: 14,
-    paddingHorizontal: 8,
-    paddingVertical: 2,
-    alignSelf: 'flex-start',
+    flex: 1,
   },
-  audienceText: {
-    fontSize: 12,
-    color: colors.gray,
-    fontWeight: '600',
+  headerRight: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 10,
+  },
+  clockBtn: {
+    padding: 4,
+  },
+  publishBtn: {
+    backgroundColor: colors.publishDisabled,
+    borderRadius: 18,
+    paddingHorizontal: 16,
+    paddingVertical: 8,
+  },
+  publishText: {
+    color: colors.white,
+    fontWeight: '700',
+    fontSize: 14,
   },
   input: {
     flex: 1,
     paddingHorizontal: 16,
+    paddingTop: 8,
     fontSize: 18,
     color: colors.black,
   },
-  toolbar: {
+  fabs: {
+    position: 'absolute',
+    right: 16,
     flexDirection: 'row',
-    justifyContent: 'space-around',
-    borderTopWidth: StyleSheet.hairlineWidth,
-    borderTopColor: colors.border,
-    paddingVertical: 14,
-    paddingBottom: 28,
-  },
-  tool: {
     alignItems: 'center',
-    gap: 4,
+    gap: 12,
   },
-  toolLabel: {
-    fontSize: 11,
-    color: colors.gray,
+  fab: {
+    width: 44,
+    height: 44,
+    borderRadius: 22,
+    backgroundColor: '#E8E8E8',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  fabLarge: {
+    width: 52,
+    height: 52,
+    borderRadius: 26,
   },
 });
