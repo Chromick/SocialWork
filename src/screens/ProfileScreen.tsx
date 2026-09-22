@@ -2,14 +2,12 @@ import { Ionicons } from '@expo/vector-icons';
 import { ReactNode } from 'react';
 import { ScrollView, StyleSheet, Text, View } from 'react-native';
 import { Avatar } from '../components/Avatar';
-import { TopBar } from '../components/TopBar';
 import { currentUser } from '../data/mock';
 import { colors } from '../theme/colors';
 
 export function ProfileScreen() {
   return (
     <View style={styles.container}>
-      <TopBar placeholder="Pesquisar" showMessage={false} />
       <ScrollView showsVerticalScrollIndicator={false}>
         <View style={styles.cover} />
         <View style={styles.card}>
