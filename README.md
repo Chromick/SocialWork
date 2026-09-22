@@ -20,6 +20,14 @@ npm install
 npx expo start
 ```
 
-## Telas (planejadas)
+## Telas
 
-Mockup visual das telas do LinkedIn (prints de referência a serem aplicados no app).
+1. Welcome — tela inicial
+2. Login — autenticação visual
+3. Home (Feed) — publicações
+4. Minha rede — conexões
+5. Publicar — criar post
+6. Notificações
+7. Vagas
+8. Perfil
+9. Mensagens
