@@ -4,7 +4,6 @@ export type MainTabParamList = {
   Post: undefined;
   Notifications: undefined;
   Jobs: undefined;
-  Profile: undefined;
 };
 
 export type RootStackParamList = {
@@ -12,4 +11,5 @@ export type RootStackParamList = {
   Login: undefined;
   Main: { screen?: keyof MainTabParamList } | undefined;
   Messages: undefined;
+  Profile: undefined;
 };

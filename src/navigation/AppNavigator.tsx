@@ -3,6 +3,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { WelcomeScreen } from '../screens/WelcomeScreen';
 import { LoginScreen } from '../screens/LoginScreen';
 import { MessagesScreen } from '../screens/MessagesScreen';
+import { ProfileScreen } from '../screens/ProfileScreen';
 import { MainTabs } from './MainTabs';
 import { RootStackParamList } from './types';
 
@@ -19,6 +20,11 @@ export function AppNavigator() {
           name="Messages"
           component={MessagesScreen}
           options={{ headerShown: true, title: 'Mensagens' }}
+        />
+        <Stack.Screen
+          name="Profile"
+          component={ProfileScreen}
+          options={{ headerShown: true, title: 'Eu' }}
         />
       </Stack.Navigator>
     </NavigationContainer>
