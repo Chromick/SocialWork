@@ -1,14 +1,15 @@
-import { FlatList, Pressable, StyleSheet, Text, View } from 'react-native';
+import { FlatList, StyleSheet, View } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
-import { BottomTabNavigationProp } from '@react-navigation/bottom-tabs';
+import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { PostCard } from '../components/PostCard';
 import { TopBar } from '../components/TopBar';
 import { posts } from '../data/mock';
 import { colors } from '../theme/colors';
-import { MainTabParamList } from '../navigation/types';
+import { RootStackParamList } from '../navigation/types';
 
 export function FeedScreen() {
-  const navigation = useNavigation<BottomTabNavigationProp<MainTabParamList>>();
+  const navigation =
+    useNavigation<NativeStackNavigationProp<RootStackParamList>>();
 
   return (
     <View style={styles.container}>
@@ -16,12 +17,6 @@ export function FeedScreen() {
         placeholder="Pesquisar"
         onAvatarPress={() => navigation.navigate('Profile')}
       />
-      <Pressable
-        style={styles.startPost}
-        onPress={() => navigation.navigate('Post')}
-      >
-        <Text style={styles.startPostText}>Começar uma publicação</Text>
-      </Pressable>
       <FlatList
         data={posts}
         keyExtractor={(item) => item.id}
@@ -38,20 +33,8 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: colors.background,
   },
-  startPost: {
-    backgroundColor: colors.white,
-    marginBottom: 8,
-    paddingVertical: 14,
-    paddingHorizontal: 16,
-    borderBottomWidth: StyleSheet.hairlineWidth,
-    borderBottomColor: colors.border,
-  },
-  startPostText: {
-    color: colors.gray,
-    fontSize: 14,
-    fontWeight: '600',
-  },
   list: {
     paddingBottom: 24,
+    paddingTop: 4,
   },
 });
