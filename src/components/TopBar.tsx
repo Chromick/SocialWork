@@ -1,12 +1,10 @@
 import { Ionicons } from '@expo/vector-icons';
-import { useNavigation } from '@react-navigation/native';
-import { NativeStackNavigationProp } from '@react-navigation/native-stack';
+import { useRouter } from 'expo-router';
 import { Pressable, StyleSheet, Text, TextInput, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { colors } from '../theme/theme';
 import { Avatar } from './Avatar';
 import { currentUser } from '../data/mock';
-import { RootStackParamList } from '../navigation/types';
 
 type Props = {
   placeholder?: string;
@@ -24,8 +22,7 @@ export function TopBar({
   badgeCount = 1,
 }: Props) {
   const insets = useSafeAreaInsets();
-  const navigation =
-    useNavigation<NativeStackNavigationProp<RootStackParamList>>();
+  const router = useRouter();
 
   return (
     <View style={[styles.wrap, { paddingTop: insets.top + 6 }]}>
@@ -53,7 +50,7 @@ export function TopBar({
       {showMessage ? (
         <Pressable
           style={styles.iconBtn}
-          onPress={() => navigation.navigate('Messages')}
+          onPress={() => router.push('/messages')}
         >
           <Ionicons
             name="chatbubble-ellipses-outline"

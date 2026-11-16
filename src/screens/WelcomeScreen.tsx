@@ -1,12 +1,10 @@
 import { Ionicons } from '@expo/vector-icons';
-import { NativeStackScreenProps } from '@react-navigation/native-stack';
+import { useRouter } from 'expo-router';
 import { Pressable, StyleSheet, Text, View } from 'react-native';
 import { colors, radius, spacing } from '../theme/theme';
-import { RootStackParamList } from '../navigation/types';
 
-type Props = NativeStackScreenProps<RootStackParamList, 'Welcome'>;
-
-export function WelcomeScreen({ navigation }: Props) {
+export function WelcomeScreen() {
+  const router = useRouter();
   return (
     <View style={styles.container}>
       <View style={styles.brandRow}>
@@ -21,14 +19,14 @@ export function WelcomeScreen({ navigation }: Props) {
 
       <Pressable
         style={styles.primaryBtn}
-        onPress={() => navigation.navigate('Login')}
+        onPress={() => router.push('/login')}
       >
         <Text style={styles.primaryText}>Entrar</Text>
       </Pressable>
 
       <Pressable
         style={styles.secondaryBtn}
-        onPress={() => navigation.replace('Main')}
+        onPress={() => router.replace('/')}
       >
         <Text style={styles.secondaryText}>Continuar como visitante</Text>
       </Pressable>

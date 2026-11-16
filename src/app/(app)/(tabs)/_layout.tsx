@@ -1,15 +1,7 @@
 import { Ionicons } from '@expo/vector-icons';
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { Tabs } from 'expo-router';
 import { View, Text, StyleSheet } from 'react-native';
-import { colors } from '../theme/theme';
-import { FeedScreen } from '../screens/FeedScreen';
-import { NetworkScreen } from '../screens/NetworkScreen';
-import { PostScreen } from '../screens/PostScreen';
-import { NotificationsScreen } from '../screens/NotificationsScreen';
-import { JobsScreen } from '../screens/JobsScreen';
-import { MainTabParamList } from './types';
-
-const Tab = createBottomTabNavigator<MainTabParamList>();
+import { colors } from '../../../theme/theme';
 
 function TabBadge({ count }: { count: number }) {
   return (
@@ -19,9 +11,9 @@ function TabBadge({ count }: { count: number }) {
   );
 }
 
-export function MainTabs() {
+export default function TabsLayout() {
   return (
-    <Tab.Navigator
+    <Tabs
       screenOptions={({ route }) => ({
         headerShown: false,
         tabBarActiveTintColor: colors.black,
@@ -38,18 +30,15 @@ export function MainTabs() {
           fontWeight: '600',
         },
         tabBarIcon: ({ color, size, focused }) => {
-          const map: Record<
-            keyof MainTabParamList,
-            keyof typeof Ionicons.glyphMap
-          > = {
-            Home: focused ? 'home' : 'home-outline',
-            Network: focused ? 'people' : 'people-outline',
-            Post: focused ? 'add-circle' : 'add-circle-outline',
-            Notifications: focused ? 'notifications' : 'notifications-outline',
-            Jobs: focused ? 'briefcase' : 'briefcase-outline',
+          const map: Record<string, keyof typeof Ionicons.glyphMap> = {
+            index: focused ? 'home' : 'home-outline',
+            network: focused ? 'people' : 'people-outline',
+            post: focused ? 'add-circle' : 'add-circle-outline',
+            notifications: focused ? 'notifications' : 'notifications-outline',
+            jobs: focused ? 'briefcase' : 'briefcase-outline',
           };
 
-          if (route.name === 'Post') {
+          if (route.name === 'post') {
             return (
               <View style={styles.postIcon}>
                 <Ionicons name="add" size={22} color={color} />
@@ -60,30 +49,27 @@ export function MainTabs() {
           return (
             <View>
               <Ionicons name={map[route.name]} size={size} color={color} />
-              {route.name === 'Notifications' ? <TabBadge count={17} /> : null}
+              {route.name === 'notifications' ? <TabBadge count={17} /> : null}
             </View>
           );
         },
       })}
     >
-      <Tab.Screen name="Home" component={FeedScreen} options={{ title: 'Início' }} />
-      <Tab.Screen
-        name="Network"
-        component={NetworkScreen}
+      <Tabs.Screen name="index" options={{ title: 'Início' }} />
+      <Tabs.Screen
+        name="network"
         options={{ title: 'Minha rede' }}
       />
-      <Tab.Screen
-        name="Post"
-        component={PostScreen}
+      <Tabs.Screen
+        name="post"
         options={{ title: 'Publicação', tabBarStyle: { display: 'none' } }}
       />
-      <Tab.Screen
-        name="Notifications"
-        component={NotificationsScreen}
+      <Tabs.Screen
+        name="notifications"
         options={{ title: 'Notificações' }}
       />
-      <Tab.Screen name="Jobs" component={JobsScreen} options={{ title: 'Vagas' }} />
-    </Tab.Navigator>
+      <Tabs.Screen name="jobs" options={{ title: 'Vagas' }} />
+    </Tabs>
   );
 }
 

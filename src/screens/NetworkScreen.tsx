@@ -7,24 +7,21 @@ import {
   Text,
   View,
 } from 'react-native';
-import { useNavigation } from '@react-navigation/native';
-import { NativeStackNavigationProp } from '@react-navigation/native-stack';
+import { useRouter } from 'expo-router';
 import { Avatar } from '../components/Avatar';
 import { TopBar } from '../components/TopBar';
 import { invites } from '../data/mock';
 import { colors } from '../theme/theme';
-import { RootStackParamList } from '../navigation/types';
 
 export function NetworkScreen() {
   const [tab, setTab] = useState<'amplie' | 'fique'>('amplie');
-  const navigation =
-    useNavigation<NativeStackNavigationProp<RootStackParamList>>();
+  const router = useRouter();
 
   return (
     <View style={styles.container}>
       <TopBar
         placeholder="Pesquisar"
-        onAvatarPress={() => navigation.navigate('Profile')}
+        onAvatarPress={() => router.push('/profile')}
       />
 
       <View style={styles.tabs}>

@@ -1,21 +1,18 @@
 import { FlatList, StyleSheet, View } from 'react-native';
-import { useNavigation } from '@react-navigation/native';
-import { NativeStackNavigationProp } from '@react-navigation/native-stack';
+import { useRouter } from 'expo-router';
 import { PostCard } from '../components/PostCard';
 import { TopBar } from '../components/TopBar';
 import { posts } from '../data/mock';
 import { colors } from '../theme/theme';
-import { RootStackParamList } from '../navigation/types';
 
 export function FeedScreen() {
-  const navigation =
-    useNavigation<NativeStackNavigationProp<RootStackParamList>>();
+  const router = useRouter();
 
   return (
     <View style={styles.container}>
       <TopBar
         placeholder="Pesquisar"
-        onAvatarPress={() => navigation.navigate('Profile')}
+        onAvatarPress={() => router.push('/profile')}
       />
       <FlatList
         data={posts}

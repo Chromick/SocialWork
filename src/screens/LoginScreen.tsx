@@ -1,4 +1,4 @@
-import { NativeStackScreenProps } from '@react-navigation/native-stack';
+import { useRouter } from 'expo-router';
 import {
   KeyboardAvoidingView,
   Platform,
@@ -9,11 +9,9 @@ import {
   View,
 } from 'react-native';
 import { colors, radius, spacing } from '../theme/theme';
-import { RootStackParamList } from '../navigation/types';
 
-type Props = NativeStackScreenProps<RootStackParamList, 'Login'>;
-
-export function LoginScreen({ navigation }: Props) {
+export function LoginScreen() {
+  const router = useRouter();
   return (
     <KeyboardAvoidingView
       style={styles.container}
@@ -23,7 +21,7 @@ export function LoginScreen({ navigation }: Props) {
       <Text style={styles.title}>Entrar</Text>
       <Text style={styles.hint}>
         Ou{' '}
-        <Text style={styles.link} onPress={() => navigation.navigate('Welcome')}>
+        <Text style={styles.link} onPress={() => router.back()}>
           voltar ao início
         </Text>
       </Text>
@@ -51,7 +49,7 @@ export function LoginScreen({ navigation }: Props) {
 
       <Pressable
         style={styles.primaryBtn}
-        onPress={() => navigation.replace('Main')}
+        onPress={() => router.replace('/')}
       >
         <Text style={styles.primaryText}>Continuar</Text>
       </Pressable>

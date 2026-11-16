@@ -7,23 +7,20 @@ import {
   Text,
   View,
 } from 'react-native';
-import { useNavigation } from '@react-navigation/native';
-import { NativeStackNavigationProp } from '@react-navigation/native-stack';
+import { useRouter } from 'expo-router';
 import { TopBar } from '../components/TopBar';
 import { jobs } from '../data/mock';
 import { colors } from '../theme/theme';
-import { RootStackParamList } from '../navigation/types';
 import { Job } from '../data/mock';
 
 export function JobsScreen() {
-  const navigation =
-    useNavigation<NativeStackNavigationProp<RootStackParamList>>();
+  const router = useRouter();
 
   return (
     <View style={styles.container}>
       <TopBar
         placeholder="Descreva a vaga que voc..."
-        onAvatarPress={() => navigation.navigate('Profile')}
+        onAvatarPress={() => router.push('/profile')}
       />
 
       <ScrollView

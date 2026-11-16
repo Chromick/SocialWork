@@ -8,27 +8,24 @@ import {
   Text,
   View,
 } from 'react-native';
-import { useNavigation } from '@react-navigation/native';
-import { NativeStackNavigationProp } from '@react-navigation/native-stack';
+import { useRouter } from 'expo-router';
 import { Avatar } from '../components/Avatar';
 import { TopBar } from '../components/TopBar';
 import { notifications, Notification } from '../data/mock';
 import { colors } from '../theme/theme';
-import { RootStackParamList } from '../navigation/types';
 
 const filters = ['Todas', 'Vagas', 'Publicações', 'Menções'];
 
 export function NotificationsScreen() {
   const [active, setActive] = useState('Todas');
-  const navigation =
-    useNavigation<NativeStackNavigationProp<RootStackParamList>>();
+  const router = useRouter();
 
   return (
     <View style={styles.container}>
       <TopBar
         placeholder="Pesquisar"
         showSettings
-        onAvatarPress={() => navigation.navigate('Profile')}
+        onAvatarPress={() => router.push('/profile')}
       />
 
       <ScrollView
