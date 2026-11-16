@@ -2,7 +2,7 @@ import { FlatList, StyleSheet, Text, View } from 'react-native';
 import { Avatar } from '../components/Avatar';
 import { TopBar } from '../components/TopBar';
 import { messages } from '../data/mock';
-import { colors } from '../theme/colors';
+import { colors } from '../theme/theme';
 
 export function MessagesScreen() {
   return (

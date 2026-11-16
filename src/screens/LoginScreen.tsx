@@ -8,7 +8,7 @@ import {
   TextInput,
   View,
 } from 'react-native';
-import { colors } from '../theme/colors';
+import { colors, radius, spacing } from '../theme/theme';
 import { RootStackParamList } from '../navigation/types';
 
 type Props = NativeStackScreenProps<RootStackParamList, 'Login'>;
@@ -63,7 +63,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: colors.white,
-    paddingHorizontal: 24,
+    paddingHorizontal: spacing.lg,
     paddingTop: 72,
   },
   brand: {
@@ -96,7 +96,7 @@ const styles = StyleSheet.create({
   input: {
     borderWidth: 1,
     borderColor: colors.gray,
-    borderRadius: 4,
+    borderRadius: radius.input,
     paddingHorizontal: 12,
     paddingVertical: 12,
     fontSize: 16,
@@ -110,7 +110,7 @@ const styles = StyleSheet.create({
   },
   primaryBtn: {
     backgroundColor: colors.primary,
-    borderRadius: 28,
+    borderRadius: radius.pill,
     paddingVertical: 14,
     alignItems: 'center',
   },

@@ -13,7 +13,7 @@ import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { Avatar } from '../components/Avatar';
 import { TopBar } from '../components/TopBar';
 import { notifications, Notification } from '../data/mock';
-import { colors } from '../theme/colors';
+import { colors } from '../theme/theme';
 import { RootStackParamList } from '../navigation/types';
 
 const filters = ['Todas', 'Vagas', 'Publicações', 'Menções'];

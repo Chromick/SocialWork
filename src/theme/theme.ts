@@ -18,3 +18,7 @@ export const colors = {
   unreadBg: '#EAF3FB',
   publishDisabled: '#B0B0B0',
 };
+
+// Aula 7: espaçamentos e raios num lugar só (nada de "números mágicos")
+export const spacing = { xs: 4, sm: 8, md: 16, lg: 24, xl: 32 };
+export const radius = { input: 4, card: 12, pill: 28 };

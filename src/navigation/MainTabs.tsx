@@ -1,7 +1,7 @@
 import { Ionicons } from '@expo/vector-icons';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { View, Text, StyleSheet } from 'react-native';
-import { colors } from '../theme/colors';
+import { colors } from '../theme/theme';
 import { FeedScreen } from '../screens/FeedScreen';
 import { NetworkScreen } from '../screens/NetworkScreen';
 import { PostScreen } from '../screens/PostScreen';

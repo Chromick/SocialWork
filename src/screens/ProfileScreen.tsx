@@ -3,7 +3,7 @@ import { ReactNode } from 'react';
 import { ScrollView, StyleSheet, Text, View } from 'react-native';
 import { Avatar } from '../components/Avatar';
 import { currentUser } from '../data/mock';
-import { colors } from '../theme/colors';
+import { colors } from '../theme/theme';
 
 export function ProfileScreen() {
   return (

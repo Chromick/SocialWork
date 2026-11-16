@@ -4,7 +4,7 @@ import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { PostCard } from '../components/PostCard';
 import { TopBar } from '../components/TopBar';
 import { posts } from '../data/mock';
-import { colors } from '../theme/colors';
+import { colors } from '../theme/theme';
 import { RootStackParamList } from '../navigation/types';
 
 export function FeedScreen() {

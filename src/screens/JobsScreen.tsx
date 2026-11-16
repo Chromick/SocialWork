@@ -11,7 +11,7 @@ import { useNavigation } from '@react-navigation/native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { TopBar } from '../components/TopBar';
 import { jobs } from '../data/mock';
-import { colors } from '../theme/colors';
+import { colors } from '../theme/theme';
 import { RootStackParamList } from '../navigation/types';
 import { Job } from '../data/mock';
 

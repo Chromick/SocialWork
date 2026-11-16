@@ -5,7 +5,7 @@ import { BottomTabNavigationProp } from '@react-navigation/bottom-tabs';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { Avatar } from '../components/Avatar';
 import { currentUser } from '../data/mock';
-import { colors } from '../theme/colors';
+import { colors } from '../theme/theme';
 import { MainTabParamList } from '../navigation/types';
 
 export function PostScreen() {

@@ -1,7 +1,7 @@
 import { Ionicons } from '@expo/vector-icons';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import { Pressable, StyleSheet, Text, View } from 'react-native';
-import { colors } from '../theme/colors';
+import { colors, radius, spacing } from '../theme/theme';
 import { RootStackParamList } from '../navigation/types';
 
 type Props = NativeStackScreenProps<RootStackParamList, 'Welcome'>;
@@ -40,13 +40,13 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: colors.white,
-    paddingHorizontal: 28,
+    paddingHorizontal: spacing.lg,
     justifyContent: 'center',
   },
   brandRow: {
     flexDirection: 'row',
     alignItems: 'center',
-    gap: 8,
+    gap: spacing.sm,
     marginBottom: 32,
   },
   brand: {
@@ -59,7 +59,7 @@ const styles = StyleSheet.create({
     fontWeight: '700',
     color: colors.black,
     lineHeight: 34,
-    marginBottom: 12,
+    marginBottom: spacing.md,
   },
   subtitle: {
     fontSize: 15,
@@ -69,10 +69,10 @@ const styles = StyleSheet.create({
   },
   primaryBtn: {
     backgroundColor: colors.primary,
-    borderRadius: 28,
+    borderRadius: radius.pill,
     paddingVertical: 14,
     alignItems: 'center',
-    marginBottom: 12,
+    marginBottom: spacing.md,
   },
   primaryText: {
     color: colors.white,
@@ -82,7 +82,7 @@ const styles = StyleSheet.create({
   secondaryBtn: {
     borderWidth: 1,
     borderColor: colors.gray,
-    borderRadius: 28,
+    borderRadius: radius.pill,
     paddingVertical: 14,
     alignItems: 'center',
   },
