@@ -1,4 +1,5 @@
 import { useRouter } from 'expo-router';
+import { useState } from 'react';
 import {
   KeyboardAvoidingView,
   Platform,
@@ -8,10 +9,21 @@ import {
   TextInput,
   View,
 } from 'react-native';
+import { useAuth } from '../context/AuthContext';
 import { colors, radius, spacing } from '../theme/theme';
 
 export function LoginScreen() {
   const router = useRouter();
+  const { entrar } = useAuth();
+  const [email, setEmail] = useState('');
+  const [senha, setSenha] = useState('');
+
+  function fazerLogin() {
+    // mockup: qualquer e-mail e senha preenchidos entram
+    if (!email.trim() || !senha.trim()) return;
+    entrar(email.trim());
+    router.replace('/');
+  }
   return (
     <KeyboardAvoidingView
       style={styles.container}
@@ -31,6 +43,8 @@ export function LoginScreen() {
         style={styles.input}
         placeholder="seu@email.com"
         placeholderTextColor={colors.grayLight}
+        value={email}
+        onChangeText={setEmail}
         keyboardType="email-address"
         autoCapitalize="none"
       />
@@ -40,6 +54,8 @@ export function LoginScreen() {
         style={styles.input}
         placeholder="••••••••"
         placeholderTextColor={colors.grayLight}
+        value={senha}
+        onChangeText={setSenha}
         secureTextEntry
       />
 
@@ -49,7 +65,7 @@ export function LoginScreen() {
 
       <Pressable
         style={styles.primaryBtn}
-        onPress={() => router.replace('/')}
+        onPress={fazerLogin}
       >
         <Text style={styles.primaryText}>Continuar</Text>
       </Pressable>

@@ -1,11 +1,13 @@
 import { Ionicons } from '@expo/vector-icons';
 import { ReactNode } from 'react';
-import { ScrollView, StyleSheet, Text, View } from 'react-native';
+import { Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
 import { Avatar } from '../components/Avatar';
+import { useAuth } from '../context/AuthContext';
 import { currentUser } from '../data/mock';
-import { colors } from '../theme/theme';
+import { colors, radius, spacing } from '../theme/theme';
 
 export function ProfileScreen() {
+  const { sair } = useAuth();
   return (
     <View style={styles.container}>
       <ScrollView showsVerticalScrollIndicator={false}>
@@ -66,6 +68,11 @@ export function ProfileScreen() {
             period="2024 — 2026"
           />
         </Section>
+
+        {/* Aula 8: ao sair, o guarda do grupo (app) manda de volta ao início */}
+        <Pressable style={styles.logoutBtn} onPress={sair}>
+          <Text style={styles.logoutText}>Sair da conta</Text>
+        </Pressable>
       </ScrollView>
     </View>
   );
@@ -110,6 +117,15 @@ function Experience({
 }
 
 const styles = StyleSheet.create({
+  logoutBtn: {
+    margin: spacing.md,
+    borderWidth: 1,
+    borderColor: colors.danger,
+    borderRadius: radius.pill,
+    paddingVertical: spacing.md - 2,
+    alignItems: 'center',
+  },
+  logoutText: { color: colors.danger, fontSize: 16, fontWeight: '700' },
   container: {
     flex: 1,
     backgroundColor: colors.background,

@@ -1,10 +1,12 @@
 import { Ionicons } from '@expo/vector-icons';
 import { useRouter } from 'expo-router';
 import { Pressable, StyleSheet, Text, View } from 'react-native';
+import { useAuth } from '../context/AuthContext';
 import { colors, radius, spacing } from '../theme/theme';
 
 export function WelcomeScreen() {
   const router = useRouter();
+  const { entrar } = useAuth();
   return (
     <View style={styles.container}>
       <View style={styles.brandRow}>
@@ -26,7 +28,10 @@ export function WelcomeScreen() {
 
       <Pressable
         style={styles.secondaryBtn}
-        onPress={() => router.replace('/')}
+        onPress={() => {
+          entrar('Visitante');
+          router.replace('/');
+        }}
       >
         <Text style={styles.secondaryText}>Continuar como visitante</Text>
       </Pressable>
