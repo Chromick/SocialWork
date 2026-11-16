@@ -9,7 +9,7 @@ Sem banco de dados — apenas interface.
 2. Instalar Expo CLI via `npx`
 3. Criar o projeto: `npx create-expo-app@latest .`
 4. Limpar o boilerplate padrão do Expo
-5. Instalar navegação (`@react-navigation/native` e dependências)
+5. Instalar navegação (Expo Router: `expo-router` e dependências)
 6. Criar as telas do mockup (mínimo 6)
 7. Rodar com `npx expo start`
 
@@ -37,3 +37,9 @@ npx expo start
 A tela **Minha rede → Gerenciar minha rede** busca pessoas em
 `https://jsonplaceholder.typicode.com/users`. Para trocar a API, crie um `.env`
 com `EXPO_PUBLIC_API_URL=...`.
+
+## Armazenamento local (Aula 10)
+
+- `services/storage.ts` guarda dados no aparelho (AsyncStorage).
+- A sessão do login é salva: fechou e abriu o app, continua logado.
+- A última lista de pessoas fica em cache e aparece mesmo sem internet.

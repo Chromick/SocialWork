@@ -18,10 +18,10 @@ export function LoginScreen() {
   const [email, setEmail] = useState('');
   const [senha, setSenha] = useState('');
 
-  function fazerLogin() {
+  async function fazerLogin() {
     // mockup: qualquer e-mail e senha preenchidos entram
     if (!email.trim() || !senha.trim()) return;
-    entrar(email.trim());
+    await entrar(email.trim());
     router.replace('/');
   }
   return (

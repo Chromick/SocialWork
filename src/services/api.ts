@@ -1,4 +1,5 @@
 import { ApiUser } from '../types/api';
+import { storage } from './storage';
 
 // Aula 9: uma porta de entrada só para a API. As telas não sabem a URL.
 const BASE =
@@ -13,6 +14,17 @@ async function req<T>(path: string): Promise<T> {
 }
 
 export const api = {
-  users: () => req<ApiUser[]>('/users'),
+  // Aula 10: guarda a última lista no aparelho; sem internet, mostra a salva
+  users: async () => {
+    try {
+      const lista = await req<ApiUser[]>('/users');
+      await storage.set('cache:users', lista);
+      return lista;
+    } catch (e) {
+      const salva = await storage.get<ApiUser[] | null>('cache:users', null);
+      if (salva) return salva;
+      throw e;
+    }
+  },
   user: (id: number) => req<ApiUser>(`/users/${id}`),
 };

@@ -28,8 +28,8 @@ export function WelcomeScreen() {
 
       <Pressable
         style={styles.secondaryBtn}
-        onPress={() => {
-          entrar('Visitante');
+        onPress={async () => {
+          await entrar('Visitante');
           router.replace('/');
         }}
       >
