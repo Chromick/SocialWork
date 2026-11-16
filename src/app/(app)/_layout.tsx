@@ -12,6 +12,8 @@ export default function AppLayout() {
   return (
     <Stack screenOptions={{ headerShown: false }}>
       <Stack.Screen name="messages" options={{ headerShown: true, title: 'Mensagens' }} />
+      <Stack.Screen name="people" options={{ headerShown: true, title: 'Pessoas' }} />
+      <Stack.Screen name="user/[id]" options={{ headerShown: true, title: 'Perfil' }} />
       <Stack.Screen name="profile" options={{ headerShown: true, title: 'Eu' }} />
     </Stack>
   );

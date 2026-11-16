@@ -31,3 +31,9 @@ npx expo start
 7. Vagas — preferências e lista
 8. Mensagens
 9. Perfil
+
+## API (Aula 9)
+
+A tela **Minha rede → Gerenciar minha rede** busca pessoas em
+`https://jsonplaceholder.typicode.com/users`. Para trocar a API, crie um `.env`
+com `EXPO_PUBLIC_API_URL=...`.

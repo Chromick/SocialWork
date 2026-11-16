@@ -96,7 +96,7 @@ export function NetworkScreen() {
 
         <View style={styles.divider} />
 
-        <Pressable style={styles.manageRow}>
+        <Pressable style={styles.manageRow} onPress={() => router.push('/people')}>
           <Text style={styles.manageText}>Gerenciar minha rede</Text>
           <Ionicons name="chevron-forward" size={18} color={colors.gray} />
         </Pressable>
