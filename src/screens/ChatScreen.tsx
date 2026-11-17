@@ -1,5 +1,6 @@
 import { Stack, useLocalSearchParams } from 'expo-router';
 import { useState } from 'react';
+import { usePersistedState } from '../hooks/usePersistedState';
 import {
   FlatList,
   KeyboardAvoidingView,
@@ -19,7 +20,9 @@ export function ChatScreen() {
   const { id } = useLocalSearchParams<{ id: string }>();
   const conversa = messages.find((m) => m.id === id);
   const [texto, setTexto] = useState('');
-  const [baloes, setBaloes] = useState<Balao[]>(
+  // Aula 10: a conversa fica salva no aparelho, uma chave por contato
+  const [baloes, setBaloes] = usePersistedState<Balao[]>(
+    `chat:${id}`,
     conversa ? [{ id: '0', texto: conversa.preview, minha: false }] : [],
   );
 
