@@ -15,6 +15,7 @@ export default function AppLayout() {
       <Stack.Screen name="people" options={{ headerShown: true, title: 'Pessoas' }} />
       <Stack.Screen name="user/[id]" options={{ headerShown: true, title: 'Perfil' }} />
       <Stack.Screen name="job/[id]" options={{ headerShown: true, title: 'Vaga' }} />
+      <Stack.Screen name="chat/[id]" options={{ headerShown: true, title: 'Conversa' }} />
       <Stack.Screen name="profile" options={{ headerShown: true, title: 'Eu' }} />
     </Stack>
   );
