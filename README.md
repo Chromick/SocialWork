@@ -31,6 +31,10 @@ npx expo start
 7. Vagas — preferências e lista
 8. Mensagens
 9. Perfil
+10. Pessoas (lista da API)
+11. Detalhe da pessoa (`user/[id]`)
+12. Detalhe da vaga (`job/[id]`)
+13. Conversa (`chat/[id]`)
 
 ## API (Aula 9)
 
