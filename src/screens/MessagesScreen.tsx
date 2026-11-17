@@ -1,10 +1,12 @@
-import { FlatList, StyleSheet, Text, View } from 'react-native';
+import { useRouter } from 'expo-router';
+import { FlatList, Pressable, StyleSheet, Text, View } from 'react-native';
 import { Avatar } from '../components/Avatar';
 import { TopBar } from '../components/TopBar';
 import { messages } from '../data/mock';
 import { colors } from '../theme/theme';
 
 export function MessagesScreen() {
+  const router = useRouter();
   return (
     <View style={styles.container}>
       <TopBar placeholder="Pesquisar mensagens" showMessage={false} />
@@ -13,7 +15,12 @@ export function MessagesScreen() {
         keyExtractor={(item) => item.id}
         contentContainerStyle={styles.list}
         renderItem={({ item }) => (
-          <View style={styles.row}>
+          <Pressable
+            style={styles.row}
+            onPress={() =>
+              router.push({ pathname: '/chat/[id]', params: { id: item.id } })
+            }
+          >
             <Avatar initials={item.initials} color={item.avatarColor} size={52} />
             <View style={styles.content}>
               <View style={styles.top}>
@@ -30,7 +37,7 @@ export function MessagesScreen() {
               </Text>
             </View>
             {item.unread ? <View style={styles.dot} /> : null}
-          </View>
+          </Pressable>
         )}
       />
     </View>
