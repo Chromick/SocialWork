@@ -79,8 +79,14 @@ export function JobsScreen() {
 }
 
 function JobRow({ job }: { job: Job }) {
+  const router = useRouter();
   return (
-    <View style={styles.jobRow}>
+    <Pressable
+      style={styles.jobRow}
+      onPress={() =>
+        router.push({ pathname: '/job/[id]', params: { id: job.id } })
+      }
+    >
       <View style={[styles.logo, { backgroundColor: job.logoColor }]}>
         <Text style={styles.logoText}>{job.logoText}</Text>
       </View>
@@ -108,7 +114,7 @@ function JobRow({ job }: { job: Job }) {
         {job.posted ? <Text style={styles.meta}>{job.posted}</Text> : null}
       </View>
       <Ionicons name="close" size={18} color={colors.gray} />
-    </View>
+    </Pressable>
   );
 }
 
